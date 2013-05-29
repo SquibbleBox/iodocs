@@ -1,0 +1,223 @@
+{
+    "endpoints": [
+        {
+            "name": "Sessions",
+            "methods": [
+                {
+                    "MethodName": "Sign In",
+                    "Synopsis": "Sign In",
+                    "HTTPMethod": "POST",
+                    "URI": "/users/sign_in",
+                    "RequiresOAuth": "N",
+                    "content": {
+                        "schema":{"type":"string"},
+                        "contentType":["application/json"],
+                        "parameters": [
+                            {
+                                "Name": "user",
+                                "Required": "Y",
+                                "Type": "object",
+                                "Description": "",
+                                "parameters": [
+                                    {
+                                        "Name": "login",
+                                        "Required": "Y",
+                                        "Type": "string",
+                                        "Description": "Username or Email"
+                                    },
+                                    {
+                                        "Name": "password",
+                                        "Required" : "Y",
+                                        "Type" : "string",
+                                        "Description" : "Password"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "parameters": [
+                    ]
+                }                         ,
+                {
+                    "MethodName" : "Sign Out",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/users/sign_out",
+                    "RequiresOAuth" : "N",
+                    "parameters": []
+                }
+            ]                             
+        },
+        {
+            "name": "Squibbles",
+            "methods": [
+                {
+                    "MethodName": "Global squibbles",
+                    "Synopsis": "Grabs latest set of squibbles uploaded",
+                    "HTTPMethod": "GET",
+                    "URI": "/squibbles/global",
+                    "RequiresOAuth": "N",
+                    "parameters":[
+                        {
+                            "Name" : "page",
+                            "Required" : "N",
+                            "Default" : "1",
+                            "Type" : "integer",
+                            "Description" : "Pagination"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name" : "Live Session Invites",
+            "methods" : [
+                {
+                    "MethodName" : "Live Session Invites",
+                    "Synopsis" : "Fetches Session Invites",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/live_session_invites",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [ ]
+                }
+
+            ]
+        },
+        {
+            "name" : "Live Sessions", 
+            "methods" : [
+                {
+                    "MethodName" : "New Live Session",
+                    "Synopsis" : "Creates a new Live Session",
+                    "HTTPMethod" : "POST",
+                    "URI" : "/api/live_sessions",
+                    "RequiresOAuth" : "Y",
+                    "content": {
+                        "schema":{"type":"string"},
+                        "contentType":["application/json"],
+                        "parameters": [
+                            {
+                                "Name": "live_session",
+                                "Required": "Y",
+                                "Type": "object",
+                                "Description": "",
+                                "parameters": [
+                                    {
+                                        "Name": "colour_theme_id",
+                                        "Required": "Y",
+                                        "Type": "integer",
+                                        "Description": "Colour theme ID",
+                                        "default" : 1
+                                    },
+                                    {
+                                        "Name": "name",
+                                        "Required" : "Y",
+                                        "Type" : "string",
+                                        "Description" : "Session name"
+                                    },
+                                    {
+                                        "Name": "user_list",
+                                        "Required": "N",
+                                        "Type": "list",
+                                        "Description": "list of users to invite",
+                                        "parameters": [
+                                            {
+                                                "Required": "Y",
+                                                "Type": "integer"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Name": "visible",
+                                        "Required" : "Y",
+                                        "Type" : "boolean",
+                                        "Description" : "Indicates whether session is publicly visible"
+                                    },
+                                    {
+                                        "Name" : "guest_permissions",
+                                        "Required" : "N",
+                                        "Type":"enumerated",
+                                        "Default" : "chat",
+                                        "EnumeratedList": [
+                                            "draw",
+                                            "chat"
+                                        ],
+                                        "EnumeratedDescription": {
+                                            "draw": "Guests can draw & chat",
+                                            "chat": "Guests can only chat"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "parameters" : [
+
+                    ]   
+                },
+                {
+                    "MethodName" : "Participating Sessions",
+                    "Synopsis" : "Grabs sessions in which user is participating ",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/live_sessions/participating",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : []
+                },
+                {
+                    "MethodName" : "Organized Sessions",
+                    "Synopsis" : "Grabs sessions which have been organized by user ",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/live_sessions/own",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : []
+                },             
+                {
+                    "MethodName" : "Public Sessions",
+                    "Synopsis" : "Grabs public sessions ",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/live_sessions/public",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : []
+                },
+                {
+                    "MethodName" : "Following Sessions",
+                    "Synopsis" : "Grabs sessions that belong to users that current user is following",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/live_sessions/following",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : []
+                },
+                {   
+                    "MethodName" : "Enter Sessions",
+                    "Synopsis" : "Enters the given session",
+                    "HTTPMethod" : "POST",
+                    "URI" : "/api/live_sessions/:id/enter",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Session ID"
+                        }
+                    ]
+                },
+                {   
+                    "MethodName" : "Leave Sessions",
+                    "Synopsis" : "Leaves the given session",
+                    "HTTPMethod" : "POST",
+                    "URI" : "/api/live_sessions/:id/leave",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Session ID"
+                        }
+                    ]
+                }
+            ]
+        }
+
+    ]
+}

@@ -1,0 +1,78 @@
+{
+    "endpoints": [
+        {
+            "name": "Testing API",
+            "methods": [
+                {
+                    "MethodName": "Sign In",
+                    "Synopsis": "Sign In",
+                    "HTTPMethod": "POST",
+                    "URI": "/users/sign_in",
+                    "RequiresOAuth": "N",
+                    "content": {
+                        "schema":{"type":"string"},
+                        "contentType":["application/json"],
+                        "parameters": [
+                            {
+                                "Name": "user",
+                                "Required": "Y",
+                                "Type": "object",
+                                "Description": "| stub",
+                                "parameters": [
+                                    {
+                                        "Name": "login",
+                                        "Required": "Y",
+                                        "Type": "string",
+                                        "Description": "Username or Email"
+                                    },
+                                    {
+                                        "Name": "password",
+                                        "Required" : "Y",
+                                        "Type" : "string",
+                                        "Description" : "Password"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "parameters": [
+                    ]
+                }                         
+            ]                             
+        },
+        {
+            "name": "Squibbles",
+            "methods": [
+                {
+                    "MethodName": "Global squibbles",
+                    "Synopsis": "Grabs latest set of squibbles uploaded",
+                    "HTTPMethod": "GET",
+                    "URI": "/squibbles/global",
+                    "RequiresOAuth": "N",
+                    "parameters":[
+                        {
+                            "Name" : "page",
+                            "Required" : "N",
+                            "Default" : "1",
+                            "Type" : "integer",
+                            "Description" : "Pagination"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name" : "Galleries",
+            "methods" : [
+                {
+                    "MethodName" : "Own Galleries",
+                    "Synopsis" : "Grabs logged in user's galleries",
+                    "HTTPMethod": "GET",
+                    "URI": "/galleries",
+                    "RequiresOAuth": "Y",
+                    "parameters": []
+                }
+            ]
+        }
+    ]
+}
