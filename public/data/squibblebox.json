@@ -73,6 +73,49 @@
                     "parameters": []
                 }
             ]
+        },
+        {
+            "name" : "Blockings",
+            "methods" : [
+                {
+                    "MethodName" : "Block",
+                    "Synopsis" : "Blocks a user",
+                    "HTTPMethod": "POST",
+                    "URI": "/users/:user_id/blocking",
+                    "RequiresOAuth": "Y",
+                    "parameters": [
+                        {
+                            "Name" : "user_id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "User ID"   
+                        }
+                    ]
+                },
+                {
+                    "MethodName" : "Unblock",
+                    "Synopsis" : "Unblocks user",
+                    "HTTPMethod": "DELETE",
+                    "URI": "/users/:user_id/blocking",
+                    "RequiresOAuth": "Y",
+                    "parameters": [
+                        {
+                            "Name" : "user_id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "User ID"   
+                        }
+                    ]
+                },
+                {
+                    "MethodName" : "Index",
+                    "Synopsis" : "Lists blocked users",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/blockings",
+                    "RequiresOAuth" : "N",
+                    "parameters" : []
+                }
+            ]
         }
     ]
 }
