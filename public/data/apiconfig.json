@@ -10,5 +10,17 @@
         "headers" : {
             "Accept": "application/json"
         }
+    },
+    "horsy" : {
+        "name" : "Horsy Dev API",
+        "protocol" : "http",
+        "baseURL" : "ec2-184-73-49-220.compute-1.amazonaws.com:3000",
+        "publicPath" : "",
+        "privatePath" : "/api",
+        "auth": "key",
+        "keyParam": "auth_token",
+        "headers" : {
+            "Accept": "application/json"
+        }
     }
 }

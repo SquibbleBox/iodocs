@@ -75,6 +75,26 @@
             ]
         },
         {
+            "name" : "Users",
+            "methods" : [
+                {
+                    "MethodName" : "Search",
+                    "Synopsis" : "Searches users",
+                    "HTTPMethod": "GET",
+                    "URI": "/users/search",
+                    "RequiresOAuth": "Y",
+                    "parameters": [
+                        {
+                            "Name" : "query",
+                            "Required" : "Y",
+                            "Type" : "string",
+                            "Description" : "search query"
+                        }
+                    ]
+                }
+             ]
+        },
+        {
             "name" : "Blockings",
             "methods" : [
                 {

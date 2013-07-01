@@ -92,7 +92,7 @@ if (config.https && config.https.on && config.https.keyPath && config.https.cert
     // try reading the key and cert files, die if that fails
     try {
         httpsKey = fs.readFileSync(config.https.keyPath);
-    } 
+    }
     catch (err) {
         console.error("Failed to read https key", config.https.keyPath);
         console.log(err);
@@ -109,7 +109,7 @@ if (config.https && config.https.on && config.https.keyPath && config.https.cert
 
     app = module.exports = express.createServer({
         key: httpsKey,
-        cert: httpsCert        
+        cert: httpsCert
     });
 
 }
@@ -144,6 +144,19 @@ app.configure(function() {
             'maxAge': 1209600000
         })
     }));
+
+    // Global basic authentication on server (applied if configured)
+    if (process.env.DOCS_AUTH_USER) {
+        config.basicAuth = { username: process.env.DOCS_AUTH_USER, password: process.env.DOCS_AUTH_PASSWORD };
+    }
+
+    if (config.basicAuth && config.basicAuth.username && config.basicAuth.password) {
+        app.use(express.basicAuth(function(user, pass, callback) {
+            process.stdout.write('expected' + config.basicAuth.username)
+            var result = (user === config.basicAuth.username && pass === config.basicAuth.password);
+            callback(null /* error */, result);
+        }));
+    }
 
     app.use(app.router);
 
