@@ -48,6 +48,19 @@
             ]                             
         },
         {
+            "name": "Colour Themes",
+            "methods": [
+                {
+                    "MethodName" : "Available Themes",
+                    "Synopsis" : "Fetches list of colour themes",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/colour_themes",
+                    "RequiresOAuth": "N",
+                    "parameters" : []
+                }
+            ]
+        },
+        {
             "name": "Squibbles",
             "methods": [
                 {

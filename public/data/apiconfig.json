@@ -13,8 +13,8 @@
     },
     "horsy" : {
         "name" : "Horsy Dev API",
-        "protocol" : "http",
-        "baseURL" : "ec2-184-73-49-220.compute-1.amazonaws.com:3000",
+        "protocol" : "https",
+        "baseURL" : "inkotest.herokuapp.com",
         "publicPath" : "",
         "privatePath" : "/api",
         "auth": "key",
