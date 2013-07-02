@@ -228,9 +228,38 @@
                             "Description" : "Session ID"
                         }
                     ]
+                },
+                {
+                    "MethodName" : "Destroy Session",
+                    "Synopsis" : "Destroys the given session",
+                    "HTTPMethod" : "DELETE",
+                    "URI" : "/api/live_sessions/:id",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Session ID"
+                        }
+                    ]
+                },
+                {
+                    "MethodName" : "End session",
+                    "Synopsis"  : "Ends and Publishes given session",
+                    "HTTPMethod" : "POST",
+                    "URI" : "/api/live_sessions/:id/end",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Session ID"
+                        }
+                    ]
                 }
             ]
         }
-
     ]
 }
