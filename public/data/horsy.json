@@ -37,7 +37,7 @@
                     },
                     "parameters": [
                     ]
-                }                         ,
+                },
                 {
                     "MethodName" : "Sign Out",
                     "HTTPMethod" : "GET",
@@ -55,8 +55,23 @@
                     "Synopsis" : "Fetches list of colour themes",
                     "HTTPMethod" : "GET",
                     "URI" : "/api/colour_themes",
-                    "RequiresOAuth": "N",
+                    "RequiresOAuth": "Y",
                     "parameters" : []
+                },
+                {
+                    "MethodName" : "Show Theme",
+                    "Synopsis" : "Fetches a given Colour Theme",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/colour_themes/:id",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Colour Theme Id"
+                        }
+                    ]
                 }
             ]
         },
