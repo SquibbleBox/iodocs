@@ -48,6 +48,57 @@
             ]                             
         },
         {
+            "name": "Follow",
+            "methods" : [
+                {
+                    "MethodName" : "Following",
+                    "Synopsis" : "Users followed by current user",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/following",
+                    "RequiresOAuth" : "Y",
+                    "parameters": []
+                },
+                {
+                    "MethodName" : "Followers",
+                    "Synopsis" : "Users following by current user",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/followers",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : []
+                },
+                {
+                    "MethodName" : "Follow",
+                    "Synopsis" : "Follows a given user",
+                    "HTTPMethod" : "POST",
+                    "URI" : "/api/users/:id/following",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "User ID"
+                        }
+                    ]
+                },
+                {
+                    "MethodName" : "Unfollow",
+                    "Synopsis" : "Unfollows a given user",
+                    "HTTPMethod" : "DELETE",
+                    "URI" : "/api/users/:id/following",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "User ID"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Colour Themes",
             "methods": [
                 {
