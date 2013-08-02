@@ -165,6 +165,14 @@
             "name" : "Live Sessions", 
             "methods" : [
                 {
+                    "MethodName" : "Explore",
+                    "Synopsis" : "Returns a user tailored selections of live sessions",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/live_sessions/explore",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [ ]
+                },
+                {
                     "MethodName" : "New Live Session",
                     "Synopsis" : "Creates a new Live Session",
                     "HTTPMethod" : "POST",
