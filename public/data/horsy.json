@@ -300,7 +300,21 @@
                     "RequiresOAuth" : "Y",
                     "parameters" : []
                 },
-
+                {
+                    "MethodName" : "User Sessions",
+                    "Synopsis" : "Grabs sessions for a given user",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/users/:id/live_sessions",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "User ID"
+                        }
+                    ]
+                },
                 {   
                     "MethodName" : "Enter Sessions",
                     "Synopsis" : "Enters the given session",
