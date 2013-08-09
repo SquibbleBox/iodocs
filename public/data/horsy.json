@@ -37,15 +37,28 @@
                     },
                     "parameters": [
                     ]
-                },
-                {
-                    "MethodName" : "Sign Out",
-                    "HTTPMethod" : "GET",
-                    "URI" : "/users/sign_out",
-                    "RequiresOAuth" : "N",
-                    "parameters": []
                 }
             ]                             
+        },
+        {
+            "name" : "Users",
+            "methods" : [
+                {
+                    "MethodName" : "Show",
+                    "Synopsis" : "Shows a given user",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/users/:id",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "User ID"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "Follow",
@@ -99,6 +112,41 @@
             ]
         },
         {
+            "name" : "Block",
+            "methods" : [
+                {
+                    "MethodName" : "Block",
+                    "Synopsis" : "Blocks a given user",
+                    "HTTPMethod" : "POST",
+                    "URI" : "/api/users/:id/blocking",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "User ID"
+                        }
+                    ]
+                },
+                {
+                    "MethodName" : "Unblock",
+                    "Synopsis" : "Unblocks a given user",
+                    "HTTPMethod" : "DELETE",
+                    "URI" : "/api/users/:id/blocking",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "User ID"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Colour Themes",
             "methods": [
                 {
@@ -121,27 +169,6 @@
                             "Required" : "Y",
                             "Type" : "integer",
                             "Description" : "Colour Theme Id"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Squibbles",
-            "methods": [
-                {
-                    "MethodName": "Global squibbles",
-                    "Synopsis": "Grabs latest set of squibbles uploaded",
-                    "HTTPMethod": "GET",
-                    "URI": "/squibbles/global",
-                    "RequiresOAuth": "N",
-                    "parameters":[
-                        {
-                            "Name" : "page",
-                            "Required" : "N",
-                            "Default" : "1",
-                            "Type" : "integer",
-                            "Description" : "Pagination"
                         }
                     ]
                 }
@@ -273,6 +300,7 @@
                     "RequiresOAuth" : "Y",
                     "parameters" : []
                 },
+
                 {   
                     "MethodName" : "Enter Sessions",
                     "Synopsis" : "Enters the given session",
@@ -330,6 +358,77 @@
                             "Required" : "Y",
                             "Type" : "integer",
                             "Description" : "Session ID"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name" : "Comments",
+            "methods" : [
+                {
+                    "MethodName" : "Post Comment",
+                    "Synopsis" : "Posts Comment to a given LiveSession",
+                    "HTTPMethod" : "POST",
+                    "URI" : "/api/live_sessions/:id/comments",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [ 
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Live Session Id"
+                        }
+                    ],
+                    "content": {
+                        "schema":{"type":"string"},
+                        "contentType":["application/json"],
+                        "parameters": [
+                            {
+                                "Name": "comment",
+                                "Required": "Y",
+                                "Type": "object",
+                                "Description": "",
+                                "parameters": [
+                                    {
+                                        "Name": "content",
+                                        "Required": "Y",
+                                        "Type": "string",
+                                        "Description": "comment content",
+                                        "default" : "blah"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "MethodName" : "Destroy Comment",
+                    "Synopsis" : "Destroys comment",
+                    "HTTPMethod" : "DELETE",
+                    "URI" : "/api/comments/:id",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Comment ID"
+                        }
+                    ]
+                },
+                {
+                    "MethodName" : "Comments Index",
+                    "Synopsis" : "Show all coments for a given live session",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/live_sessions/:id/comments",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [ 
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Live Session Id"
                         }
                     ]
                 }
