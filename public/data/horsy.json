@@ -269,38 +269,6 @@
                     ]   
                 },
                 {
-                    "MethodName" : "Participating Sessions",
-                    "Synopsis" : "Grabs sessions in which user is participating ",
-                    "HTTPMethod" : "GET",
-                    "URI" : "/api/live_sessions/participating",
-                    "RequiresOAuth" : "Y",
-                    "parameters" : []
-                },
-                {
-                    "MethodName" : "Organized Sessions",
-                    "Synopsis" : "Grabs sessions which have been organized by user ",
-                    "HTTPMethod" : "GET",
-                    "URI" : "/api/live_sessions/own",
-                    "RequiresOAuth" : "Y",
-                    "parameters" : []
-                },             
-                {
-                    "MethodName" : "Public Sessions",
-                    "Synopsis" : "Grabs public sessions ",
-                    "HTTPMethod" : "GET",
-                    "URI" : "/api/live_sessions/public",
-                    "RequiresOAuth" : "Y",
-                    "parameters" : []
-                },
-                {
-                    "MethodName" : "Following Sessions",
-                    "Synopsis" : "Grabs sessions that belong to users that current user is following",
-                    "HTTPMethod" : "GET",
-                    "URI" : "/api/live_sessions/following",
-                    "RequiresOAuth" : "Y",
-                    "parameters" : []
-                },
-                {
                     "MethodName" : "User Sessions",
                     "Synopsis" : "Grabs sessions for a given user",
                     "HTTPMethod" : "GET",
@@ -443,6 +411,46 @@
                             "Required" : "Y",
                             "Type" : "integer",
                             "Description" : "Live Session Id"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name" : "Events",
+            "methods" : [
+                {
+                    "MethodName" : "Index",
+                    "Synopsis" : "Shows events for a given user",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/events",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "last_event",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "epoch time as int to fetch events from"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name" : "Chat Messages",
+            "methods" : [
+                {
+                    "MethodName" : "Index",
+                    "Synopsis" : "Gets messages for route",
+                    "HTTPMethod": "GET",
+                    "URI": "/api/live_sessions/:session_id/chat_messages",
+                    "RequiresOAuth": "Y",
+                    "parameters": [
+                        {
+                            "Name" : "session_id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Live Session ID"   
                         }
                     ]
                 }
