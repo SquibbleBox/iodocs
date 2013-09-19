@@ -72,6 +72,14 @@
                     "parameters": []
                 },
                 {
+                    "MethodName" : "Online",
+                    "Synopsis" : "Ids of online users followed by current user",
+                    "HTTPMethod" : "GET",
+                    "URI" : "/api/following/online",
+                    "RequiresOAuth" : "Y",
+                    "parameters": []
+                },
+                {
                     "MethodName" : "Followers",
                     "Synopsis" : "Users following by current user",
                     "HTTPMethod" : "GET",
