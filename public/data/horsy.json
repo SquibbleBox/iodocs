@@ -354,6 +354,41 @@
             ]
         },
         {
+            "name" : "Likes",
+            "methods" : [
+                {
+                    "MethodName" : "Like",
+                    "Synopsis" : "Likes a given LiveSession",
+                    "HTTPMethod" : "POST",
+                    "URI" : "/api/live_sessions/:id/like",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [ 
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Live Session Id"
+                        }
+                    ]
+                },
+                {
+                    "MethodName" : "Unlike",
+                    "Synopsis" : "Unlikes a given LiveSession",
+                    "HTTPMethod" : "DELETE",
+                    "URI" : "/api/live_sessions/:id/like",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [ 
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Live Session Id"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name" : "Comments",
             "methods" : [
                 {
