@@ -192,6 +192,54 @@
                     "URI" : "/api/live_session_invites",
                     "RequiresOAuth" : "Y",
                     "parameters" : [ ]
+                },
+                {
+                    "MethodName" : "Create LiveSession Invite",
+                    "Synopsis" : "Fetches Session Invites",
+                    "HTTPMethod" : "POST",
+                    "URI" : "/api/live_sessions/:id/invites",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [ 
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Live Session ID"
+                        }
+                    ],
+                     "content": {
+                        "schema":{"type":"string"},
+                        "contentType":["application/json"],
+                        "parameters": [
+                            {
+                                "Name": "live_session_invite",
+                                "Required": "Y",
+                                "Type": "object",
+                                "Description": "Session Invite Object",
+                                "parameters": [
+                                    {
+                                        "Name" : "kind",
+                                        "Required" : "N",
+                                        "Type":"enumerated",
+                                        "Default" : "user",
+                                        "EnumeratedList": [
+                                            "user"
+                                        ],
+                                        "EnumeratedDescription": {
+                                            "user": "Invite User"
+                                        }
+                                    },
+                                    {
+                                        "Name": "user_id",
+                                        "Required": "N",
+                                        "Type": "integer",
+                                        "Description": "User ID if sending User invite",
+                                        "default" : ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 }
 
             ]
@@ -494,6 +542,55 @@
                             "Required" : "Y",
                             "Type" : "integer",
                             "Description" : "Live Session ID"   
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name" : "Devices",
+            "methods" : [
+                {
+                    "MethodName" : "Create",
+                    "Synopsis" : "Registers Device",
+                    "HTTPMethod": "POST",
+                    "URI": "/api/devices",
+                    "RequiresOAuth": "Y",
+                    "parameters": [
+                    ],
+                    "content": {
+                        "schema":{"type":"string"},
+                        "contentType":["application/json"],
+                        "parameters": [
+                            {
+                                "Name": "device",
+                                "Required": "Y",
+                                "Type": "object",
+                                "Description": "Device",
+                                "parameters": [
+                                    {
+                                        "Name": "registration_id",
+                                        "Required": "Y",
+                                        "Type": "integer",
+                                        "Description": "Device Registration Id"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "MethodName" : "Destroy",
+                    "Synopsis" : "Removes Device Registration",
+                    "HTTPMethod" : "DELETE",
+                    "URI" : "/api/devices/:id",
+                    "RequiresOAuth" : "Y",
+                    "parameters" : [
+                        {
+                            "Name" : "id",
+                            "Required" : "Y",
+                            "Type" : "integer",
+                            "Description" : "Registration ID"
                         }
                     ]
                 }
